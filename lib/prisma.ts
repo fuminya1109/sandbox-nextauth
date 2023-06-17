@@ -1,5 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 
+// refs: https://pris.ly/d/help/next-js-best-practices
+
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
