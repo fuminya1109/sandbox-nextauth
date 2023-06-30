@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import type { Todos } from '@prisma/client';
 
 export default function TodoApp() {
@@ -17,13 +17,20 @@ export default function TodoApp() {
     };
     loadTodos();
   }, []);
+  const handleChange = (e: ChangeEvent) => {
+    console.log(e.target);
+  };
   return (
     <div>
       <ul>
         {todos.map((todo) => {
           return (
             <li key={todo.id}>
-              <input type="checkbox" checked={todo.completed}></input>
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={handleChange}
+              ></input>
               <label>{todo.text}</label>
             </li>
           );
